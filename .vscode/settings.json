@@ -3,7 +3,8 @@
       "source.fixAll": true
     },
     "cSpell.words": [
-      "stylelint"
+      "stylelint",
+      "unixtime"
     ],
     "stylelint.validate": [
       "css",
