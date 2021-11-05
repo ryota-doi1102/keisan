@@ -42,6 +42,7 @@ const BmiPage: NextPage = () => {
             <span>kg</span>
           </div>
           <input type="submit" value="計算" onClick={handleClickSubmitButton} />
+          {/* TODO: リセットボタンのクリックハンドラを実装する */}
           <input type="reset" value="クリア" />
           <div>
             <label>
