@@ -59,7 +59,7 @@ const BmrPage: NextPage = () => {
 
   return (
     <main>
-      <h2>基礎代謝</h2>
+      <h1>基礎代謝</h1>
       <p>生命を維持するために必要なエネルギー量である基礎代謝量（BMR）を計算します。</p>
       <form>
         <div>

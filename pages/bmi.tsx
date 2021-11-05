@@ -45,7 +45,7 @@ const BmiPage: NextPage = () => {
 
   return (
     <main>
-      <h2>ＢＭＩと適正体重</h2>
+      <h1>ＢＭＩと適正体重</h1>
       <p>身長と体重から肥満度を示すBMIと適正体重を計算します。</p>
       <form>
         <div>
