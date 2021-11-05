@@ -9,6 +9,11 @@ const TopPage: NextPage = () => (
           <a>ＢＭＩと適正体重</a>
         </Link>
       </li>
+      <li>
+        <Link href="/bmr">
+          <a>基礎代謝</a>
+        </Link>
+      </li>
     </ul>
   </main>
 );
