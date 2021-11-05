@@ -83,11 +83,7 @@ const BmrPage: NextPage = () => {
         <input type="submit" value="計算" onClick={handleClickSubmitButton} />
         <input type="reset" value="クリア" onClick={handleClickResetButton} />
         <div>
-          <label>
-            基礎代謝量
-            <output>{bmr}</output>
-            <span>kcal</span>
-          </label>
+          <output>基礎代謝量:{bmr}kcal</output>
         </div>
       </form>
     </main>
