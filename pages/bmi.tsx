@@ -1,46 +1,25 @@
+import useCalculateBmi from 'hooks/useCalculateBmi';
 import { NextPage } from 'next';
-import { useState } from 'react';
-import { calculateAppropriateWeight, calculateBmi } from 'utils/calculator';
 
 const BmiPage: NextPage = () => {
-  const [height, setHeight] = useState<number | ''>(0);
-  const [weight, setWeight] = useState<number | ''>(0);
-  const [bmi, setBmi] = useState(0);
-  const [appropriateWeight, setAppropriateWeight] = useState(0);
+  const { weight, height, bmi, appropriateWeight, changeHeight, changeWeight, calculate, reset } = useCalculateBmi();
 
   const handleChangeHeight: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    if (value === '') {
-      setHeight(value);
-    } else {
-      setHeight(Number.parseInt(value));
-    }
+    changeHeight(event.target.value);
   };
+
   const handleChangeWeight: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    if (value === '') {
-      setWeight(value);
-    } else {
-      setWeight(Number.parseInt(value));
-    }
+    changeWeight(event.target.value);
   };
 
   const handleClickSubmitButton: React.MouseEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    if (weight && height) {
-      const bmi = calculateBmi(height, weight);
-      setBmi(bmi);
-      console.log(bmi);
-      const appropriateWeight = calculateAppropriateWeight(height);
-      setAppropriateWeight(appropriateWeight);
-    }
+    calculate();
   };
+
   const handleClickResetButton: React.MouseEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    setHeight(0);
-    setWeight(0);
-    setBmi(0);
-    setAppropriateWeight(0);
+    reset();
   };
 
   return (
