@@ -1,60 +1,30 @@
-import { isSex, Sex } from '@types';
+import useCalculateBmr from 'hooks/useCalculateBmr';
 import { NextPage } from 'next';
-import { useState } from 'react';
-import { calculateBmr } from 'utils/calculator';
 
 const BmrPage: NextPage = () => {
-  const [age, setAge] = useState<number | ''>(0);
-  const [sex, setSex] = useState<Sex>(1);
-  const [height, setHeight] = useState<number | ''>(0);
-  const [weight, setWeight] = useState<number | ''>(0);
-  const [bmr, setBmr] = useState(0);
+  const { age, sex, height, weight, bmr, changeAge, changeSex, changeHeight, changeWeight, calculate, reset } =
+    useCalculateBmr();
 
   const handleChangeAge: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    if (value === '') {
-      setAge(value);
-    } else {
-      setAge(Number.parseInt(value));
-    }
+    changeAge(event.target.value);
   };
   const handleChangeSex: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = Number.parseInt(event.target.value);
-    if (isSex(value)) {
-      setSex(value);
-    }
+    changeSex(event.target.value);
   };
   const handleChangeHeight: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    if (value === '') {
-      setHeight(value);
-    } else {
-      setHeight(Number.parseInt(value));
-    }
+    changeHeight(event.target.value);
   };
   const handleChangeWeight: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    if (value === '') {
-      setWeight(value);
-    } else {
-      setWeight(Number.parseInt(value));
-    }
+    changeWeight(event.target.value);
   };
 
   const handleClickSubmitButton: React.MouseEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    if (age && height && weight) {
-      const bmr = calculateBmr(age, height, weight, sex);
-      setBmr(bmr);
-    }
+    calculate();
   };
   const handleClickResetButton: React.MouseEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    setAge(0);
-    setSex(1);
-    setHeight(0);
-    setWeight(0);
-    setBmr(0);
+    reset();
   };
 
   return (
